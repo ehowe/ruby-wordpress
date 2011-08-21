@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  meta_id: 
+  comment_id: 
+  meta_key: 
+  meta_value: MyText
+
+two:
+  meta_id: 
+  comment_id: 
+  meta_key: 
+  meta_value: MyText

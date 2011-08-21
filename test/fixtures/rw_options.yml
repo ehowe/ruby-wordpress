@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  option_id: 1
+  blog_id: 1
+  option_name: MyString
+  option_value: MyText
+  autoload: MyString
+
+two:
+  option_id: 1
+  blog_id: 1
+  option_name: MyString
+  option_value: MyText
+  autoload: MyString

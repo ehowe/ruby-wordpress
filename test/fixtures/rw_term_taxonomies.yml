@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  term_taxonomy_id: 1
+  term_id: 1
+  taxonomy: MyString
+  description: MyText
+  parent: 1
+  count: 
+
+two:
+  term_taxonomy_id: 1
+  term_id: 1
+  taxonomy: MyString
+  description: MyText
+  parent: 1
+  count: 

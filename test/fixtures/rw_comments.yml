@@ -1,0 +1,35 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  comment_id: 
+  comment_post_id: 
+  comment_author: MyText
+  comment_author_email: MyString
+  comment_author_url: MyString
+  comment_author_ip: MyString
+  comment_date: 2011-08-21 13:40:40
+  comment_date_gmt: 2011-08-21 13:40:40
+  comment_content: MyText
+  comment_karma: 
+  comment_approved: MyString
+  comment_agent: MyString
+  comment_type: MyString
+  comment_parent: 
+  user_id: 
+
+two:
+  comment_id: 
+  comment_post_id: 
+  comment_author: MyText
+  comment_author_email: MyString
+  comment_author_url: MyString
+  comment_author_ip: MyString
+  comment_date: 2011-08-21 13:40:40
+  comment_date_gmt: 2011-08-21 13:40:40
+  comment_content: MyText
+  comment_karma: 
+  comment_approved: MyString
+  comment_agent: MyString
+  comment_type: MyString
+  comment_parent: 
+  user_id: 

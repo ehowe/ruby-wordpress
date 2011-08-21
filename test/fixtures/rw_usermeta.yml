@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  umeta_id: 1
+  user_id: 1
+  meta_key: MyString
+  meta_value: MyText
+
+two:
+  umeta_id: 1
+  user_id: 1
+  meta_key: MyString
+  meta_value: MyText

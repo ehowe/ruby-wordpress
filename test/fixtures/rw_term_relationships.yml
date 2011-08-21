@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  object_id: 1
+  term_taxonomy_id: 1
+  term_order: 1
+
+two:
+  object_id: 1
+  term_taxonomy_id: 1
+  term_order: 1

@@ -1,0 +1,51 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  post_author: 1
+  post_date: 2011-08-21 17:47:36
+  post_date_gmt: 2011-08-21 17:47:36
+  post_content: MyText
+  post_title: MyText
+  post_excerpt: MyText
+  post_status: MyString
+  comment_status: MyString
+  ping_status: MyString
+  post_password: MyString
+  post_name: MyString
+  to_ping: MyText
+  pinged: MyText
+  post_modified: 2011-08-21 17:47:36
+  post_modified_gmt: 2011-08-21 17:47:36
+  post_content: 
+  post_parent: 1
+  guid: MyString
+  menu_order: 1
+  post_type: MyString
+  post_mime_type: MyString
+  comment_count: 1
+
+two:
+  id: 1
+  post_author: 1
+  post_date: 2011-08-21 17:47:36
+  post_date_gmt: 2011-08-21 17:47:36
+  post_content: MyText
+  post_title: MyText
+  post_excerpt: MyText
+  post_status: MyString
+  comment_status: MyString
+  ping_status: MyString
+  post_password: MyString
+  post_name: MyString
+  to_ping: MyText
+  pinged: MyText
+  post_modified: 2011-08-21 17:47:36
+  post_modified_gmt: 2011-08-21 17:47:36
+  post_content: 
+  post_parent: 1
+  guid: MyString
+  menu_order: 1
+  post_type: MyString
+  post_mime_type: MyString
+  comment_count: 1
