@@ -1,0 +1,14 @@
+<nav id="access" role="navigation">
+  <div class="menu">
+    <ul>
+      <li class="<%= @home_class %>"><a href="<%= @blog[:siteurl] %>">Home</a></li>
+      <% @posts.each do |post| %>
+        <% if "/pages/#{post.id}" == @request_url %>
+          <li class="current_page_item"><a href="/pages/<%= post.id %>"><%= post.post_title %></a></li>
+        <% else %>
+          <li class="page-item"><a href="/pages/<%= post.id %>"><%= post.post_title %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</nav>
