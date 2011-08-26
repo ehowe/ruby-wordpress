@@ -2385,7 +2385,7 @@ p.comment-form-comment {
 		font-size: 12px;
 	}
 	blockquote {
-		margin: 0;
+		margin: 1em;
 	}
 	blockquote.pull {
 		font-size: 17px;

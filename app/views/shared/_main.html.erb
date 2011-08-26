@@ -1,3 +1,22 @@
-<div id="main">
+<div id="<%= @div_id %>">
+  <div id="primary">
+	<div id="content" role="main">
+      <article id="post-<%= @page_content.id %>" class="post-<%= @page_content.id %> <%= @page_content.post_type %> type-<%= @page_content.post_type %> status-<%= @page_content.post_status %> format-standard hentry <%= @page_content.categories.join %>">
+        <header class="entry-header">
+          <h1 class="entry-title">
+            <a href="/<%= @page_content.post_type %>/<%= @page_content.id %>" title="Permalink to <%= @page_content.post_title %>"><%= @page_content.post_title %></a>
+          </h1>
+          <div class="entry-meta">
+            <span class="sep">Posted on </span><a href="/<%= @page_content.post_type %>" title="<%= @page_content.post_modified.strftime('%l:%M %p') %>" rel="bookmark"><time class="entry-date" datetime="<%= @page_content.post_modified %>" pubdate><%= @page_content.post_modified.strftime('%B %d, %Y') %></time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="/users/<%= @page_content.user.display_name %>" title="View all posts by <%= @page_content.user.display_name %>" rel="author"><%= @page_content.user.display_name %></a></span></span>
+          </div>
+          <div class="comments-link">
 
+          </div>
+          <div class="entry-content">
+            <p><%= @page_content.post_content.html_safe %></p>
+          </div>
+        </header>
+      </article>
+    </div>
+  </div
 </div>

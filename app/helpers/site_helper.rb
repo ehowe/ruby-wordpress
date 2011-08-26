@@ -3,7 +3,7 @@ module SiteHelper
   class Options
     def self.get_options
       @blog = Hash.new
-      options = RwOptions.find(:all, :select => ['option_name','option_value'])
+      options = Option.find(:all, :select => ['option_name','option_value'])
       options.each do |option|
         @blog[option.option_name.to_sym] = option.option_value
       end
@@ -13,7 +13,7 @@ module SiteHelper
 
   class Navigation
     def self.get_pages
-      @posts = RwPosts.find(:all, :conditions => ['post_type = ? and post_status = ?', 'page', 'publish'])
+      @posts = Post.find(:all, :conditions => ['post_type = ? and post_status = ?', 'page', 'publish'])
     end
   end
 end

@@ -3,7 +3,8 @@ class PagesController < ApplicationController
     @home_class = "page-item"
     @blog = SiteHelper::Options.get_options
     @posts = SiteHelper::Navigation.get_pages
-    @post = RwPosts.find(:first, :conditions => ['id = ? and post_type = ?', params[:id], 'page'])
+    @page_content = Post.find_last_by_post_type "page"
+    @page_content.categories.map! { |c| "category-" + c.category_name.downcase! }
     @request_url = request.fullpath
   end
 end

@@ -57,4 +57,5 @@ RubyWordpress::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   root :to => "site#index"
   match "/pages/:id" => "pages#page", :via => :get
+  match "/rw-admin" => "admin#login", :via => :get
 end

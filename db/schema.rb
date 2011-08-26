@@ -10,9 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821230241) do
+ActiveRecord::Schema.define(:version => 20110826233455) do
 
-  create_table "rw_commentmeta", :force => true do |t|
+  create_table "categories", :force => true do |t|
+    t.string   "category_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["category_name"], :name => "category_name"
+
+  create_table "categories_posts", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "category_id"
+  end
+
+  create_table "commentmeta", :force => true do |t|
     t.integer  "meta_id"
     t.integer  "comment_id", :default => 0, :null => false
     t.string   "meta_key"
@@ -21,10 +34,10 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_commentmeta", ["comment_id"], :name => "comment_id"
-  add_index "rw_commentmeta", ["meta_key"], :name => "meta_key"
+  add_index "commentmeta", ["comment_id"], :name => "comment_id"
+  add_index "commentmeta", ["meta_key"], :name => "meta_key"
 
-  create_table "rw_comments", :force => true do |t|
+  create_table "comments", :force => true do |t|
     t.integer  "comment_id"
     t.integer  "comment_post_id"
     t.text     "comment_author"
@@ -44,13 +57,13 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_comments", ["comment_approved", "comment_date_gmt"], :name => "comment_approved_date_gmt"
-  add_index "rw_comments", ["comment_approved"], :name => "comment_approved"
-  add_index "rw_comments", ["comment_date_gmt"], :name => "comment_date_gmt"
-  add_index "rw_comments", ["comment_parent"], :name => "comment_parent"
-  add_index "rw_comments", ["comment_post_id"], :name => "comment_post_id"
+  add_index "comments", ["comment_approved", "comment_date_gmt"], :name => "comment_approved_date_gmt"
+  add_index "comments", ["comment_approved"], :name => "comment_approved"
+  add_index "comments", ["comment_date_gmt"], :name => "comment_date_gmt"
+  add_index "comments", ["comment_parent"], :name => "comment_parent"
+  add_index "comments", ["comment_post_id"], :name => "comment_post_id"
 
-  create_table "rw_links", :force => true do |t|
+  create_table "links", :force => true do |t|
     t.integer  "link_id"
     t.string   "link_url"
     t.string   "link_name"
@@ -68,9 +81,9 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_links", ["link_visible"], :name => "link_visible"
+  add_index "links", ["link_visible"], :name => "link_visible"
 
-  create_table "rw_options", :force => true do |t|
+  create_table "options", :force => true do |t|
     t.integer  "option_id"
     t.integer  "blog_id",                    :default => 0
     t.string   "option_name",  :limit => 64
@@ -80,9 +93,9 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_options", ["option_name"], :name => "option_name", :unique => true
+  add_index "options", ["option_name"], :name => "option_name", :unique => true
 
-  create_table "rw_postmeta", :force => true do |t|
+  create_table "postmeta", :force => true do |t|
     t.integer  "meta_id"
     t.integer  "post_id",    :default => 0
     t.string   "meta_key"
@@ -91,11 +104,11 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_postmeta", ["meta_key"], :name => "meta_key_postmeta"
-  add_index "rw_postmeta", ["post_id"], :name => "post_id"
+  add_index "postmeta", ["meta_key"], :name => "meta_key_postmeta"
+  add_index "postmeta", ["post_id"], :name => "post_id"
 
-  create_table "rw_posts", :force => true do |t|
-    t.integer  "post_author",                          :default => 0
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id",                              :default => 0
     t.datetime "post_date"
     t.datetime "post_date_gmt"
     t.text     "post_content"
@@ -121,48 +134,12 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_posts", ["post_author"], :name => "post_author"
-  add_index "rw_posts", ["post_name"], :name => "post_name"
-  add_index "rw_posts", ["post_parent"], :name => "post_parent"
-  add_index "rw_posts", ["post_type", "post_status", "post_date", "id"], :name => "type_status_date"
+  add_index "posts", ["post_name"], :name => "post_name"
+  add_index "posts", ["post_parent"], :name => "post_parent"
+  add_index "posts", ["post_type", "post_status", "post_date", "id"], :name => "type_status_date"
+  add_index "posts", ["user_id"], :name => "post_author"
 
-  create_table "rw_term_relationships", :force => true do |t|
-    t.integer  "object_id",        :default => 0
-    t.integer  "term_taxonomy_id", :default => 0
-    t.integer  "term_order",       :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rw_term_relationships", ["term_taxonomy_id"], :name => "term_taxonomy_id"
-
-  create_table "rw_term_taxonomies", :force => true do |t|
-    t.integer  "term_taxonomy_id"
-    t.integer  "term_id",                        :default => 0
-    t.string   "taxonomy",         :limit => 32
-    t.text     "description"
-    t.integer  "parent",                         :default => 0
-    t.integer  "count",                          :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rw_term_taxonomies", ["taxonomy"], :name => "taxonomy"
-  add_index "rw_term_taxonomies", ["term_id", "taxonomy"], :name => "term_id_taxonomy", :unique => true
-
-  create_table "rw_terms", :force => true do |t|
-    t.integer  "term_id"
-    t.string   "name",       :limit => 200
-    t.string   "slug",       :limit => 200
-    t.integer  "term_group",                :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rw_terms", ["name"], :name => "name"
-  add_index "rw_terms", ["slug"], :name => "slug"
-
-  create_table "rw_usermeta", :force => true do |t|
+  create_table "usermeta", :force => true do |t|
     t.integer  "umeta_id"
     t.integer  "user_id",    :default => 0
     t.string   "meta_key"
@@ -171,10 +148,10 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_usermeta", ["meta_key"], :name => "meta_key_usermeta"
-  add_index "rw_usermeta", ["user_id"], :name => "user_id"
+  add_index "usermeta", ["meta_key"], :name => "meta_key_usermeta"
+  add_index "usermeta", ["user_id"], :name => "user_id"
 
-  create_table "rw_users", :force => true do |t|
+  create_table "users", :force => true do |t|
     t.string   "user_login",          :limit => 60
     t.string   "user_pass",           :limit => 64
     t.string   "user_nicename",       :limit => 50
@@ -188,7 +165,7 @@ ActiveRecord::Schema.define(:version => 20110821230241) do
     t.datetime "updated_at"
   end
 
-  add_index "rw_users", ["user_login"], :name => "user_login_key"
-  add_index "rw_users", ["user_nicename"], :name => "user_nicename"
+  add_index "users", ["user_login"], :name => "user_login_key"
+  add_index "users", ["user_nicename"], :name => "user_nicename"
 
 end
