@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110826233455) do
+ActiveRecord::Schema.define(:version => 20110827042634) do
 
   create_table "categories", :force => true do |t|
     t.string   "category_name"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110826233455) do
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_id"
-    t.integer  "comment_post_id"
+    t.integer  "post_id"
     t.text     "comment_author"
     t.string   "comment_author_email", :limit => 100
     t.string   "comment_author_url",   :limit => 200
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20110826233455) do
   add_index "comments", ["comment_approved"], :name => "comment_approved"
   add_index "comments", ["comment_date_gmt"], :name => "comment_date_gmt"
   add_index "comments", ["comment_parent"], :name => "comment_parent"
-  add_index "comments", ["comment_post_id"], :name => "comment_post_id"
+  add_index "comments", ["post_id"], :name => "comment_post_id"
 
   create_table "links", :force => true do |t|
     t.integer  "link_id"

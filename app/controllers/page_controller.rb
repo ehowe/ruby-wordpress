@@ -1,5 +1,5 @@
-class PagesController < ApplicationController
-  def page
+class PageController < ApplicationController
+  def index
     @home_class = "page-item"
     @blog = SiteHelper::Options.get_options
     @posts = SiteHelper::Navigation.get_pages

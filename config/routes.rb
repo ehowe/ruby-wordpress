@@ -1,4 +1,6 @@
 RubyWordpress::Application.routes.draw do
+  get "post/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,6 +58,7 @@ RubyWordpress::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   root :to => "site#index"
-  match "/pages/:id" => "pages#page", :via => :get
+  match "/page/:id" => "page#index", :via => :get
+  match "/post/:id" => "post#index", :via => :get
   match "/rw-admin" => "admin#login", :via => :get
 end

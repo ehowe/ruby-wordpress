@@ -1,0 +1,17 @@
+<ol class="commentlist">
+  <%- @page_content.comments.each do |comment| -%>
+    <li id="li-comment-<%= comment.id %>">
+      <article id="comment-<%= comment.id %>" class="comment">
+        <footer class="comment-meta">
+          <div class="comment-author vcard">
+            <img alt='' src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=68" class='avatar avatar-68 photo avatar-default' height="68" width="68" />
+            <span class="fn"><a href="<%= comment.comment_author_url %>" rel="external nofollow" class="url"><%= comment.comment_author %></a></span> on <a href="<%= @request_url %>#comment-<%= comment.id %>"<time pubdate datetime="<%= comment.comment_date_gmt %>"<%= comment.comment_date_gmt.strftime('%B %m, %Y at %l:%M %p') %>"</time></a> <span class="says">said:</span>
+            <div class="comment-content">
+              <p><%= comment.comment_content.html_safe %></p>
+            </div>
+          </div>
+        </footer>
+      </article>
+    </li>
+  <%- end -%>
+</ol>

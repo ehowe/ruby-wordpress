@@ -1,4 +1,4 @@
-<div id="<%= @div_id %>">
+<div>
   <div id="primary">
 	<div id="content" role="main">
       <article id="post-<%= @page_content.id %>" class="post-<%= @page_content.id %> <%= @page_content.post_type %> type-<%= @page_content.post_type %> status-<%= @page_content.post_status %> format-standard hentry <%= @page_content.categories.join %>">
@@ -10,13 +10,24 @@
             <span class="sep">Posted on </span><a href="/<%= @page_content.post_type %>" title="<%= @page_content.post_modified.strftime('%l:%M %p') %>" rel="bookmark"><time class="entry-date" datetime="<%= @page_content.post_modified %>" pubdate><%= @page_content.post_modified.strftime('%B %d, %Y') %></time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="/users/<%= @page_content.user.display_name %>" title="View all posts by <%= @page_content.user.display_name %>" rel="author"><%= @page_content.user.display_name %></a></span></span>
           </div>
           <div class="comments-link">
-
-          </div>
-          <div class="entry-content">
-            <p><%= @page_content.post_content.html_safe %></p>
+            <a href="/<%= @page_content.post_type %>/<%= @page_content.id %>#respond" title="Comment on <%= @page_content.post_title %>"><span class="leave-reply">Reply</span></a>
           </div>
         </header>
+        <div class="entry-content">
+          <p><%= @page_content.post_content.html_safe %></p>
+        </div>
+        <footer class="entry-meta">
+          <span class="cat-links">
+            <span class="entry-utility-prep entry-utility-prep-cat-links">Posted in</span>
+            <%- @page_content.categories.each do |cat| -%>
+              <a href="/category/<%= cat.gsub(/.*-/,'') %>"><%= cat.gsub(/.*-/,'').capitalize %></a><%= "," unless (@page_content.categories.index(cat) + 1) == @page_content.categories.length %>
+            <%- end -%>
+          </span>
+        </footer>
+        <%- if @request_url =~ /^\/(post|page)/ -%>
+          <%= render 'shared/comment' -%>
+        <%- end -%>
       </article>
     </div>
-  </div
+  </div>
 </div>
